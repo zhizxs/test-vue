@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>工作内容管理</title>
+  <style>
+    body {
+      padding: 50px;
+      font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    }
+    label{
+      margin-top:10px;
+      display: block;
+    }
+    .content{
+      width: 500px;
+      height:300px;
+      border: 1px solid #666;
+      margin:10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <label for="">取个名字吧：
+      <input type="text" placeholder="请输入你的名字">
+      <button onclick='recodeUser()'>注册</button>
+    </label>
+    <br/>
+    <label for="">请输入番茄工作法时间:
+      <input type="num" placeholder="25">(单位：min)
+      <button>设置</button>
+    </label>
+    <br/>
+    <label>开始一个任务：
+      <input type="text" placeholder="请输入一个任务">
+      <button>开始</button>
+    </label>
+    <br>
+    <label for="">
+      <button>获取</button>当前执行的任务：
+      <br>
+      <div class='content'></div>
+    </label>
+  </div>
+
+  <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+  <script>
+
+    // 记录一个用户
+    function recodeUser(){
+        $.ajax({
+          url:'/write_file',
+          type:'post',
+          data:{msg:'张三'},
+          dataType:'json',
+          success:function(data){
+            console.log('请求数据：',data)
+          },
+          error:function(err){
+
+          }
+        })
+    }
+
+    //获取任务内容
+    function getFileContent(){
+
+    }
+    // 写入文件
+    function writeFile(){
+
+    }
+
+    // 设置工作法时间
+    function setTime(){
+
+    }
+    // 记录一个任务
+    function recodeTask(){
+
+    }
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

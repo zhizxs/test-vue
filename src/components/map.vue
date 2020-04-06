@@ -44,20 +44,20 @@ export default {
       myCharts.setOption(option, true, true);
     },
     /**
-         * 
-         * data
-         * ["西安", XAData]
-         * 
-         * XAData
-         *  [
-        		[{
-        			name: '西安'
-        		}, {
-        			name: '北京',
-        			value: 100
-        		}]
-        	]
-         */
+     * 
+     * data
+     * ["西安", XAData]
+     * 
+     * XAData
+     *  [
+        [{
+          name: '西安'
+        }, {
+          name: '北京',
+          value: 100
+        }]
+      ]
+      */
     convertData(data) {
       let res = [];
       for (let i = 0; i < data.length; i++) {
@@ -91,7 +91,7 @@ export default {
 
       data.forEach((item, i) => {
         this.series.push(
-          // 线条 canvas 2 层 变化的线条
+          // 线条 canvas 1 层 变化的线条
           {
             name: item[0] + " Top3",
             type: "lines",
@@ -136,7 +136,7 @@ export default {
             },
             data: this.convertData(item[1])
           },
-          // canvas 2 层 定位数据层
+          // canvas  层 定位数据层
           {
             name: item[0] + " Top3",
             type: "effectScatter",
@@ -152,9 +152,9 @@ export default {
                 formatter: "{b}"
               }
             },
-            symbolSize: function(val) {
-              return val[2] / 8;
-            },
+            // symbolSize: function(val) {
+            //   return val[2] / 8;
+            // },
             itemStyle: {
               normal: {
                 color: this.color[i]
@@ -166,16 +166,16 @@ export default {
             data: item[1].map(function(dataItem) {
               return {
                 name: dataItem[1].name,
-                value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
+                value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value]),
               };
             })
-          }
+          },
         );
       });
     },
     initOption() {
       let _this = this;
-      let option = {
+      let option = { 
         backgroundColor: "#000",
         title: {
           text: "模拟航线",
@@ -231,7 +231,16 @@ export default {
             emphasis: {
               areaColor: "#2B91B7"
             }
-          }
+          },
+          // 区域选中
+          regions: [{
+              name: '陕西',
+              itemStyle: {
+                  areaColor: 'red',
+                  color: 'red'
+              },
+              selected:true
+          }]
         },
         series: _this.series
       };

@@ -6,7 +6,10 @@ import pageB from '@/components/pageB'
 import tab1 from '@/components/tab/tab1'
 import tab2 from '@/components/tab/tab2'
 import tab3 from '@/components/tab/tab3'
+import input from '@/components/input'
 import map from '@/components/map'
+import seats from '@/components/seats'
+import svga from '@/components/svga'
 
 Vue.use(Router)
 
@@ -33,6 +36,18 @@ export default new Router({
       path: '/map',
       name: 'map',
       component: map
-    },
+    },{
+      path: '/seats',
+      name: 'seats',
+      component: seats
+    },{
+      path: '/input',
+      name: 'input',
+      component: input
+    },{
+      path: '/svga',
+      name: 'svga',
+      component: svga
+    }
   ]
 })

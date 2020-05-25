@@ -22,4 +22,11 @@ export default {
   color: #2c3e50;
   /*margin-top: 60px;*/
 }
+button{
+  padding: 10px;
+  border-radius: 5px;
+  background: rgba(41,151,254,.6);
+  outline: none;
+  border:0;
+}
 </style>

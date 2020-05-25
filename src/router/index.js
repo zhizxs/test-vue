@@ -1,53 +1,106 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import pageA from '@/components/pageA'
-import pageB from '@/components/pageB'
-import tab1 from '@/components/tab/tab1'
-import tab2 from '@/components/tab/tab2'
-import tab3 from '@/components/tab/tab3'
-import input from '@/components/input'
-import map from '@/components/map'
-import seats from '@/components/seats'
-import svga from '@/components/svga'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+  routes: [{
+    path: "/",
+    name: "home",
+    meta: {
+      title: "首页"
+    },
+    component: () =>
+      import ( /* webpackChunkName: "common" */ "../views/home.vue")
+  }, {
+    path: '/pageA',
+    name: 'pageA',
+    component: () =>
+      import ( /* webpackChunkName: "common" */ "../views/pageA.vue"),
+    children: [{
+      name: 'tab1',
+      path: '/tab1',
+      component: () =>
+        import ( /* webpackChunkName: "common" */ "../views/tab/tab1.vue")
     }, {
-      path: '/pageA',
-      name: 'pageA',
-      component: pageA,
-      children:[
-        {name:'tab1',path:'/tab1',component:tab1},
-        {name:'tab2',path:'/tab2',component:tab2},
-        {name:'tab3',path:'/tab3',component:tab3}
-      ]
+      name: 'tab2',
+      path: '/tab2',
+      component: () =>
+        import ( /* webpackChunkName: "common" */ "../views/tab/tab2.vue")
     }, {
-      path: '/pageB',
-      name: 'pageB',
-      component: pageB
-    },{
-      path: '/map',
-      name: 'map',
-      component: map
-    },{
-      path: '/seats',
-      name: 'seats',
-      component: seats
-    },{
-      path: '/input',
-      name: 'input',
-      component: input
-    },{
-      path: '/svga',
-      name: 'svga',
-      component: svga
-    }
-  ]
+      name: 'tab3',
+      path: '/tab3',
+      component: () =>
+        import ( /* webpackChunkName: "common" */ "../views/tab/tab3.vue")
+    }]
+  }, {
+    path: '/pageB',
+    name: 'pageB',
+    component: () =>
+      import ( /* webpackChunkName: "common" */ "../views/pageB.vue")
+  }, {
+    path: '/map',
+    name: 'map',
+    meta: {
+      title: "地图"
+    },
+    component: () =>
+      import ( /* webpackChunkName: "common" */ "../views/map.vue")
+  }, {
+    path: '/seat',
+    name: 'seat',
+    meta: {
+      title: "座位"
+    },
+    component: () =>
+      import ( /* webpackChunkName: "common" */ "../views/seat.vue")
+  }, {
+    path: '/input',
+    name: 'input',
+    meta: {
+      title: "输入框"
+    },
+    component: () =>
+      import ( /* webpackChunkName: "common" */ "../views/input.vue")
+  }, {
+    path: '/svga',
+    name: 'svga',
+    meta: {
+      title: "svga"
+    },
+    component: () =>
+      import ( /* webpackChunkName: "common" */ "../views/svga.vue")
+  }, {
+    path: '/socket',
+    name: 'socket',
+    meta: {
+      title: "通信"
+    },
+    component: () =>
+      import ( /* webpackChunkName: "common" */ "../views/socket.vue")
+  }, {
+    path: '/vueEdit',
+    name: 'vueEdit',
+    meta: {
+      title: "富文本"
+    },
+    component: () =>
+      import ( /* webpackChunkName: "common" */ "../views/vueEdit.vue")
+  }, {
+    path: '/canvas',
+    name: 'canvas',
+    meta: {
+      title: "html2canvas"
+    },
+    component: () =>
+      import ( /* webpackChunkName: "common" */ "../views/canvas.vue")
+  }, {
+    path: '/others',
+    name: 'others',
+    meta: {
+      title: "其他"
+    },
+    component: () =>
+      import ( /* webpackChunkName: "common" */ "../views/others.vue")
+  }]
 })

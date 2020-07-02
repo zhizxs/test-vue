@@ -18,12 +18,12 @@ export default {
         return {
             numGrow: '',
             startTime:0,
-            num:9112332458,
+            num:1000,
             option: {
-                isfomat: true,
-                prefix:"$",
-                duration: 3000,
-                decimal:2
+                isfomat: true, // 格式化为三位数增加 ,
+                prefix:"$",// 前缀
+                duration: 3000, // 时间
+                decimal:2  // 小数
             }
         }
     },

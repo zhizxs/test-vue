@@ -9,7 +9,8 @@
             <button @click="jump('map')">测试地图</button>
             <button @click="jump('svga')">测试svga</button>
             <button @click="jump('input')">测试input键盘调起</button>
-            <button @click="jump('others')">其他小项</button>
+            <button @click="jump('ele')">ele组件</button>
+            <button @click="jump('others')">其他小件</button>
         </fieldset>
     </div>
 </template>

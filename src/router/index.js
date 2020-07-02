@@ -95,6 +95,14 @@ export default new Router({
     component: () =>
       import ( /* webpackChunkName: "common" */ "../views/canvas.vue")
   }, {
+    path: '/ele',
+    name: 'ele',
+    meta: {
+      title: "ele组件"
+    },
+    component: () =>
+      import ( /* webpackChunkName: "common" */ "../views/ele.vue")
+  }, {
     path: '/others',
     name: 'others',
     meta: {

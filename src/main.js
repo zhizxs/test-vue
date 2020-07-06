@@ -9,6 +9,17 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 import CKEditor from '@ckeditor/ckeditor5-vue';
 
+import * as Sentry from '@sentry/browser'
+import * as Integrations from '@sentry/integrations'
+
+Sentry.init({
+	dsn: 'https://8a8ee2ff6ade434193cef8d7c235bfa5@o416492.ingest.sentry.io/5311690',
+	integrations: [new Integrations.Vue({
+		Vue,
+		attachProps: true
+	})],
+})
+
 Vue.use(CKEditor);
 
 import router from './router'

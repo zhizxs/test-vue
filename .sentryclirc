@@ -1,0 +1,7 @@
+[auth]
+token=a25243a35c3a43e8bd4895a0024c40a1e796d1617df04ad5a553cfac65335486
+ 
+[defaults]
+org=zhiz
+project=zhiz
+url=https://sentry.io/

@@ -103,6 +103,14 @@ export default new Router({
     component: () =>
       import ( /* webpackChunkName: "common" */ "../views/ele.vue")
   }, {
+    path: '/vueApi',
+    name: 'vueApi',
+    meta: {
+      title: "vue-api"
+    },
+    component: () =>
+      import ( /* webpackChunkName: "common" */ "../views/vueApi.vue")
+  }, {
     path: '/others',
     name: 'others',
     meta: {

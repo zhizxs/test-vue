@@ -31,13 +31,13 @@ export default {
   },
   methods:{
   	handleBlur(){
-  		this.dispatch('iForm','on-form-blur',this.currentValue)
+  		this.dispatch('iFormItem','on-form-blur',this.currentValue)
   	},
   	handleInput(event){
   		const val = event.target.value
   		this.currentValue = val
   		this.$emit('input',val)
-  		this.dispatch('iForm','on-form-blur',val)
+  		this.dispatch('iFormItem','on-form-blur',val)
   	}
   }
 }

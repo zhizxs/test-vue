@@ -17,12 +17,31 @@
         <fieldset>
             <legend>组件传值 (broadcast)</legend>
             <button @click="handleClick">触发事件</button>
-            <trans-msg></trans-msg>   
+            <trans-msg></trans-msg>
         </fieldset>
-
         <fieldset>
             <legend>表单验证</legend>
-              
+            <h3>具有数据校验功能的表单组件——Form</h3>
+            <i-form ref="form" :model="formValidate" :rules="ruleValidate">
+                <i-form-item label="用户名" prop="name">
+                    <i-input v-model="formValidate.name"></i-input>
+                </i-form-item>
+                <i-form-item label="邮箱" prop="mail">
+                    <i-input v-model="formValidate.mail"></i-input>
+                </i-form-item>
+                <i-form-item label="爱好" prop="mult">
+                    <i-checkbox-group v-model='formValidate.mult'>
+                        <i-checkbox label='option1'>上网</i-checkbox>
+                        <i-checkbox label='option2'>熬夜</i-checkbox>
+                        <i-checkbox label='option3'>吹牛逼</i-checkbox>
+                    </i-checkbox-group>
+                </i-form-item>
+                <i-form-item prop="sing">
+                    <i-checkbox v-model="formValidate.sing">我已阅读</i-checkbox>
+                </i-form-item>
+            </i-form>
+            <button @click="handleSubmit">提交</button>
+            <button @click="handleReset">重置</button>
         </fieldset>
     </div>
 </template>
@@ -31,6 +50,14 @@ import Emitter from '@/mixins/emitter.js';
 import increatBtn from "@/components/api/increatBtn.vue"
 import transMsg from "@/components/api/transMsg.vue"
 
+import iForm from '@/components/form/form.vue';
+import iFormItem from '@/components/form/formItem.vue';
+import iInput from '@/components/form/input.vue';
+import iCheckbox from '@/components/form/checkbox.vue';
+import iCheckboxGroup from '@/components/form/checkboxGroup.vue';
+
+
+
 export default {
     name: 'api',
     inject: ['app'],
@@ -38,12 +65,38 @@ export default {
     data() {
         return {
             value: 0,
+            formValidate: {
+                name: '',
+                mail: '',
+                sing: false,
+                mult: [],
+            },
+            ruleValidate: {
+                name: [
+                    { required: true, message: '用户名不能为空', trigger: 'blur' }
+                ],
+                mail: [
+                    { required: true, message: '邮箱不能为空', trigger: 'blur' },
+                    { type: 'email', message: '邮箱格式不正确', trigger: 'blur' }
+                ],
+                mult: [
+                    { required: true, type: 'array', message: '必须选一个', trigger: 'change' }
+                ],
+                sing: [
+                    { required: true, type: "enum", enum: [true], message: '单选必须选', trigger: 'change' }
+                ]
+            }
 
         }
     },
     components: {
         increatBtn,
-        transMsg
+        transMsg,
+        iForm,
+        iFormItem,
+        iInput,
+        iCheckbox,
+        iCheckboxGroup
     },
     methods: {
         getInfo() {
@@ -52,6 +105,18 @@ export default {
         },
         handleClick() {
             this.broadcast('transMsg', 'on-message', 'Hello Vue.js')
+        },
+        handleSubmit() {
+            this.$refs.form.validate((valid) => {
+                if (valid) {
+                    window.alert('提交成功');
+                } else {
+                    window.alert('表单校验失败');
+                }
+            })
+        },
+        handleReset() {
+            this.$refs.form.resetFields();
         }
     }
 }

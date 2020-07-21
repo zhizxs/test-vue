@@ -39,6 +39,16 @@
                 <i-form-item prop="sing">
                     <i-checkbox v-model="formValidate.sing">我已阅读</i-checkbox>
                 </i-form-item>
+                <i-form-item prop="sradio">
+                    <i-radio v-model="formValidate.sradio">我已阅读</i-radio>
+                </i-form-item>
+                <i-form-item label="我的偶像" prop="idol">
+                    <i-radio-group v-model="formValidate.idol">
+                        <i-radio label="ouxiang1">张三丰</i-radio>
+                        <i-radio label="ouxiang2">张无忌</i-radio>
+                        <i-radio label="ouxiang3">章子怡</i-radio>
+                    </i-radio-group>
+                </i-form-item>
             </i-form>
             <button @click="handleSubmit">提交</button>
             <button @click="handleReset">重置</button>
@@ -55,6 +65,8 @@ import iFormItem from '@/components/form/formItem.vue';
 import iInput from '@/components/form/input.vue';
 import iCheckbox from '@/components/form/checkbox.vue';
 import iCheckboxGroup from '@/components/form/checkboxGroup.vue';
+import iRadioGroup from '@/components/form/radioGroup.vue';
+import iRadio from '@/components/form/radio.vue';
 
 
 
@@ -84,7 +96,11 @@ export default {
                 ],
                 sing: [
                     { required: true, type: "enum", enum: [true], message: '单选必须选', trigger: 'change' }
-                ]
+                ],
+                sradio: [
+                    { required: true, type: "enum", enum: [true], message: '单选必须选', trigger: 'change' }
+                ],
+                idol: [{ required: true,  message: '必须选一个', trigger: 'change' }]
             }
 
         }
@@ -96,7 +112,9 @@ export default {
         iFormItem,
         iInput,
         iCheckbox,
-        iCheckboxGroup
+        iCheckboxGroup,
+        iRadioGroup,
+        iRadio,
     },
     methods: {
         getInfo() {

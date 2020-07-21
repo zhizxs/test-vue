@@ -22,7 +22,7 @@ export default {
         },
         prop: {
             type: String,
-        }
+        },
     },
     data() {
         return {

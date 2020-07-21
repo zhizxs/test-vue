@@ -111,6 +111,30 @@ export default new Router({
     component: () =>
       import ( /* webpackChunkName: "common" */ "../views/vueApi.vue")
   }, {
+    path: '/renderVue',
+    name: 'renderVue',
+    meta: {
+      title: "render-vue"
+    },
+    component: () =>
+      import ( /* webpackChunkName: "common" */ "../views/renderVue.vue")
+  }, {
+    path: '/tableRender',
+    name: 'tableRender',
+    meta: {
+      title: "table-render"
+    },
+    component: () =>
+      import ( /* webpackChunkName: "common" */ "../views/tableRender.vue")
+  },, {
+    path: '/tableSlot',
+    name: 'tableSlot',
+    meta: {
+      title: "table-slot"
+    },
+    component: () =>
+      import ( /* webpackChunkName: "common" */ "../views/tableSlot.vue")
+  }, {
     path: '/others',
     name: 'others',
     meta: {

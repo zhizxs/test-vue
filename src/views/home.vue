@@ -21,6 +21,9 @@
         <fieldset>
             <legend>vue-api</legend>
             <button @click="jump('vueApi')">vueApi</button>
+            <button @click="jump('renderVue')">动态渲染 .vue</button>
+            <button @click="jump('tableRender')">表格渲染-render</button>
+            <button @click="jump('tableSlot')">表格渲染-slot</button>
         </fieldset>
     </div>
 </template>

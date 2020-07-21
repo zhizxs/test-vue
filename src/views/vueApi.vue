@@ -20,6 +20,10 @@
             <trans-msg></trans-msg>
         </fieldset>
         <fieldset>
+            <legend>树形菜单</legend>
+            <i-tree :data='data' :showCheckbox="true"></i-tree>
+        </fieldset>
+        <fieldset>
             <legend>表单验证</legend>
             <h3>具有数据校验功能的表单组件——Form</h3>
             <i-form ref="form" :model="formValidate" :rules="ruleValidate">
@@ -67,6 +71,7 @@ import iCheckbox from '@/components/form/checkbox.vue';
 import iCheckboxGroup from '@/components/form/checkboxGroup.vue';
 import iRadioGroup from '@/components/form/radioGroup.vue';
 import iRadio from '@/components/form/radio.vue';
+import iTree from '@/components/tree/tree.vue';
 
 
 
@@ -100,8 +105,34 @@ export default {
                 sradio: [
                     { required: true, type: "enum", enum: [true], message: '单选必须选', trigger: 'change' }
                 ],
-                idol: [{ required: true,  message: '必须选一个', trigger: 'change' }]
-            }
+                idol: [{ required: true, message: '必须选一个', trigger: 'change' }]
+            },
+            data: [{
+                title: 'parent 1',
+                expand: true,
+                children: [{
+                        title: 'parent 1-1',
+                        expand: true,
+                        children: [{
+                                title: 'leaf 1-1-1'
+                            },
+                            {
+                                title: 'leaf 1-1-2'
+                            }
+                        ]
+                    },
+                    {
+                        title: 'parent 1-2',
+                        children: [{
+                                title: 'leaf 1-2-1'
+                            },
+                            {
+                                title: 'leaf 1-2-1'
+                            }
+                        ]
+                    }
+                ]
+            }]
 
         }
     },
@@ -115,6 +146,7 @@ export default {
         iCheckboxGroup,
         iRadioGroup,
         iRadio,
+        iTree
     },
     methods: {
         getInfo() {

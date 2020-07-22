@@ -20,6 +20,7 @@ import * as Integrations from '@sentry/integrations'
 // 	})],
 // })
 
+
 Vue.use(CKEditor);
 
 import router from './router'

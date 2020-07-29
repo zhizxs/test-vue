@@ -21,6 +21,7 @@
     "echarts": "^4.6.0",
     "element-ui": "^2.13.0",
     "html2canvas": "^1.0.0-alpha.12",
+    "lodash": "^4.17.19",
     "quill-image-drop-module": "^1.0.3",
     "quill-image-resize-module": "^3.0.0",
     "svgaplayerweb": "^2.3.0",
